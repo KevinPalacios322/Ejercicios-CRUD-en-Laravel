@@ -16,6 +16,9 @@ Route::post('/libros/crear_libro',[LibroController::class, 'store'])->middleware
 Route::get('/libros/actualizar_libro/{id}', [LibroController::class, 'edit'])->middleware('auth')-> name('libros.actualizar_libro');
 Route::put('/libros/actualizar_libro/{id}', [LibroController::class, 'update'])->middleware('auth')-> name('libros.guardar_libro');
 
+Route::delete('/libros/eliminar_libro/{id}', [LibroController::class, 'destroy'])->middleware('auth')-> name('libros.eliminar_libro');
+
+
 Route::get('/', [LoginController::class, 'MostrarLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'iniciarSesion']);
 Route::post('/logout', [LoginController::class, 'cerrarSesion']);
