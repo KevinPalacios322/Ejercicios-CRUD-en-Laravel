@@ -3,6 +3,10 @@
     <button type="submit">Cerrar Sesión</button>
 </form>
 
+<button>
+    <a href="{{ url('libros/crear_libro') }}">Crear Libro</a>
+</button>
+
 <table>
     <thead>
         <tr>
