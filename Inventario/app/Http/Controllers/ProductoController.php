@@ -55,4 +55,18 @@ class ProductoController extends Controller
 
         return redirect()->route('producto')->with('success', 'Producto actualizado exitosamente.');
     }
+    public function destroy($id)
+    {
+        $producto = Producto::findOrFail($id);
+        $producto->delete();
+
+        return redirect()->route('producto')->with('success', 'Producto eliminado exitosamente.');
+    }
+
+    public function showdelete($id)
+    {
+        $producto = Producto::findOrFail($id);
+
+        return view('producto.delete', compact('producto'));
+    }
 }

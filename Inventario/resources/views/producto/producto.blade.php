@@ -29,6 +29,11 @@
                 <td>{{ $producto->existencia }}</td>
                 <td>
                     <a href="{{ route('producto.edit', $producto->id) }}">Editar</a>
+                    <form action="{{ route('producto.delete', $producto->id) }}" method="POST" style="display: inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Eliminar</button>
+                    </form>
                 </td>
             </tr>
         @endforeach
