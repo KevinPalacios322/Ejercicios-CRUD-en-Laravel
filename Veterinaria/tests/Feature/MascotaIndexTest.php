@@ -77,6 +77,29 @@ class MascotaIndexTest extends TestCase
         $this->assertDatabaseMissing('mascotas', ['codigo' => 'MAS-90002']);
     }
 
+    public function test_authenticated_user_can_update_a_pets_owner(): void
+    {
+        $mascota = Mascota::factory()->create([
+            'codigo' => 'MAS-90003',
+            'propietario' => 'Propietario anterior',
+        ]);
+
+        $response = $this->actingAs(User::factory()->create())
+            ->put(route('mascotas.update', $mascota), [
+                'codigo' => $mascota->codigo,
+                'nombre' => $mascota->nombre,
+                'especie' => $mascota->especie,
+                'propietario' => 'Nuevo propietario',
+                'fecha_nacimiento' => $mascota->fecha_nacimiento->toDateString(),
+            ]);
+
+        $response->assertRedirect(route('mascotas.index'));
+        $this->assertDatabaseHas('mascotas', [
+            'id' => $mascota->id,
+            'propietario' => 'Nuevo propietario',
+        ]);
+    }
+
     public function test_pet_cannot_be_saved_with_invalid_data(): void
     {
         $this->expectException(ValidationException::class);

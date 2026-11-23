@@ -23,3 +23,11 @@ Route::get('/mascotas/crear', [MascotaController::class, 'create'])
 Route::post('/mascotas', [MascotaController::class, 'store'])
     ->middleware('auth')
     ->name('mascotas.store');
+
+Route::get('/mascotas/{mascota}/editar', [MascotaController::class, 'edit'])
+    ->middleware('auth')
+    ->name('mascotas.edit');
+
+Route::put('/mascotas/{mascota}', [MascotaController::class, 'update'])
+    ->middleware('auth')
+    ->name('mascotas.update');
