@@ -31,3 +31,11 @@ Route::get('/mascotas/{mascota}/editar', [MascotaController::class, 'edit'])
 Route::put('/mascotas/{mascota}', [MascotaController::class, 'update'])
     ->middleware('auth')
     ->name('mascotas.update');
+
+Route::get('/mascotas/{mascota}/eliminar', [MascotaController::class, 'confirmDelete'])
+    ->middleware('auth')
+    ->name('mascotas.delete');
+
+Route::delete('/mascotas/{mascota}', [MascotaController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('mascotas.destroy');

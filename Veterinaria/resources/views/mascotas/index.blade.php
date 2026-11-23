@@ -41,7 +41,10 @@
                         <td>{{ $mascota->especie }}</td>
                         <td>{{ $mascota->propietario }}</td>
                         <td>{{ $mascota->fecha_nacimiento->format('d/m/Y') }}</td>
-                        <td><a href="{{ route('mascotas.edit', $mascota) }}">Editar</a></td>
+                        <td>
+                            <a href="{{ route('mascotas.edit', $mascota) }}">Editar</a>
+                            <a href="{{ route('mascotas.delete', $mascota) }}">Eliminar</a>
+                        </td>
                     </tr>
                 @empty
                     <tr>

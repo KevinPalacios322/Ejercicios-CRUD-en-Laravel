@@ -42,4 +42,17 @@ class MascotaController extends Controller
         return redirect()->route('mascotas.index')
             ->with('success', 'Mascota actualizada correctamente.');
     }
+
+    public function confirmDelete(Mascota $mascota): View
+    {
+        return view('mascotas.delete', compact('mascota'));
+    }
+
+    public function destroy(Mascota $mascota): RedirectResponse
+    {
+        $mascota->delete();
+
+        return redirect()->route('mascotas.index')
+            ->with('success', 'Mascota eliminada correctamente.');
+    }
 }

@@ -100,6 +100,29 @@ class MascotaIndexTest extends TestCase
         ]);
     }
 
+    public function test_cancelling_deletion_keeps_the_pet_registered(): void
+    {
+        $mascota = Mascota::factory()->create();
+
+        $this->actingAs(User::factory()->create())
+            ->get(route('mascotas.delete', $mascota))
+            ->assertOk()
+            ->assertSee('Cancelar');
+
+        $this->assertDatabaseHas('mascotas', ['id' => $mascota->id]);
+    }
+
+    public function test_confirming_deletion_removes_the_pet(): void
+    {
+        $mascota = Mascota::factory()->create();
+
+        $response = $this->actingAs(User::factory()->create())
+            ->delete(route('mascotas.destroy', $mascota));
+
+        $response->assertRedirect(route('mascotas.index'));
+        $this->assertDatabaseMissing('mascotas', ['id' => $mascota->id]);
+    }
+
     public function test_pet_cannot_be_saved_with_invalid_data(): void
     {
         $this->expectException(ValidationException::class);
