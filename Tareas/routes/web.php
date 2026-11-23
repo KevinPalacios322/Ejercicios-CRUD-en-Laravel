@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TareaController;
 
 Route::get('/', function () {
     return view('login');
@@ -13,6 +14,6 @@ Route::post('/logout', [LoginController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
-Route::get('/tareas', function () {
-    return view('tareas');
-})->middleware('auth')->name('tareas');
+Route::get('/tareas', [TareaController::class, 'index'])
+    ->middleware('auth')
+    ->name('tareas');

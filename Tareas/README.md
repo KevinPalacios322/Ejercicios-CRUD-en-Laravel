@@ -26,8 +26,13 @@ DB_PASSWORD=
 
 Cree la base `tareas` en MySQL y ejecute `php artisan migrate --seed`.
 
-La migración crea la tabla `users` con el campo único `usuario`. El seeder crea o
-actualiza la cuenta `admin` y almacena la contraseña `12345678` con hash.
+La migración de usuarios crea la tabla `users` con el campo único `usuario`. La
+migración de tareas crea `tareas` con sus cinco datos y las marcas de tiempo.
+
+El seeder crea o actualiza la cuenta `admin`, almacena la contraseña `12345678`
+con hash y ejecuta la factory de tareas para generar diez registros ficticios.
+La factory genera títulos, descripciones, responsables, fechas límite y estados
+válidos. Los datos se crean solo al ejecutar los seeders, no al abrir el listado.
 
 ## Credenciales
 

@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
             ['usuario' => 'admin'],
             ['password' => Hash::make('12345678')]
         );
+
+        $this->call(TareaSeeder::class);
     }
 }
