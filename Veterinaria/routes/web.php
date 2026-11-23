@@ -15,3 +15,11 @@ Route::view('/veterinaria', 'dashboard')
 Route::get('/mascotas', [MascotaController::class, 'index'])
     ->middleware('auth')
     ->name('mascotas.index');
+
+Route::get('/mascotas/crear', [MascotaController::class, 'create'])
+    ->middleware('auth')
+    ->name('mascotas.create');
+
+Route::post('/mascotas', [MascotaController::class, 'store'])
+    ->middleware('auth')
+    ->name('mascotas.store');

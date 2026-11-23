@@ -9,6 +9,12 @@
     <main>
         <h1>Registro de mascotas</h1>
 
+        @if (session('success'))
+            <p role="status">{{ session('success') }}</p>
+        @endif
+
+        <a href="{{ route('mascotas.create') }}">Registrar mascota</a>
+
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit">Cerrar sesión</button>
