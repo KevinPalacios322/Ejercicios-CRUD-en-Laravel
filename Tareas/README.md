@@ -34,6 +34,13 @@ con hash y ejecuta la factory de tareas para generar diez registros ficticios.
 La factory genera títulos, descripciones, responsables, fechas límite y estados
 válidos. Los datos se crean solo al ejecutar los seeders, no al abrir el listado.
 
+## Crear tareas
+
+El formulario permite registrar título, descripción, responsable, fecha límite y
+estado. Valida los límites de longitud, exige todos los campos y acepta una fecha
+pasada. Conserva los valores válidos si se encuentra otro error y muestra un
+mensaje de éxito al regresar al listado.
+
 ## Credenciales
 
 - Usuario: `admin`

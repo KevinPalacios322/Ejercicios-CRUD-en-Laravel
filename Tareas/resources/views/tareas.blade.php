@@ -14,6 +14,12 @@
         <button type="submit">Cerrar sesión</button>
     </form>
 
+    <p><a href="{{ route('tareas.create') }}">Crear tarea</a></p>
+
+    @if (session('success'))
+        <p role="status">{{ session('success') }}</p>
+    @endif
+
     @if ($tareas->isEmpty())
         <p>No hay tareas registradas.</p>
     @else
