@@ -5,6 +5,8 @@
 
 <h1>Estudiantes</h1>
 
+<button><a href="{{ route('estudiante.create') }}">Crear Estudiante</a></button>
+
 <table>
     <thead>
         <tr>
