@@ -28,7 +28,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('veterinaria.dashboard', absolute: false));
+        return redirect()->intended(route('mascotas.index', absolute: false));
     }
 
     public function logout(Request $request): RedirectResponse

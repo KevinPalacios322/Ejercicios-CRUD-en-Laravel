@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Database\Factories\MascotaFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+#[Fillable(['codigo', 'nombre', 'especie', 'propietario', 'fecha_nacimiento'])]
+class Mascota extends Model
+{
+    /** @use HasFactory<MascotaFactory> */
+    use HasFactory;
+
+    protected function casts(): array
+    {
+        return [
+            'fecha_nacimiento' => 'date',
+        ];
+    }
+}

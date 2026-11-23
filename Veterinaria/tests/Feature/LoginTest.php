@@ -23,7 +23,7 @@ class LoginTest extends TestCase
             'password' => '12345678',
         ]);
 
-        $response->assertRedirect(route('veterinaria.dashboard'));
+        $response->assertRedirect(route('mascotas.index'));
         $this->assertAuthenticated();
     }
 
