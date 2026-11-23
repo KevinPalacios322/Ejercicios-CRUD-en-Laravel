@@ -14,3 +14,6 @@ Route::get ('/producto',[ProductoController::class, 'index']) -> name('producto'
 
 Route::get ('/producto/create',[ProductoController::class, 'create']) -> name('producto.create') -> middleware('auth');
 Route::post('/producto/store',[ProductoController::class, 'store']) -> name('producto.store') -> middleware('auth');
+
+Route::get ('/producto/{id}/edit',[ProductoController::class, 'edit']) -> name('producto.edit') -> middleware('auth');
+Route::put ('/producto/{id}',[ProductoController::class, 'update']) -> name('producto.update') -> middleware('auth');

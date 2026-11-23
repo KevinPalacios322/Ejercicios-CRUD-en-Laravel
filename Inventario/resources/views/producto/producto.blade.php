@@ -16,6 +16,7 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Existencia</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +27,9 @@
                 <td>{{ $producto->nombre }}</td>
                 <td>${{ $producto->precio }}</td>
                 <td>{{ $producto->existencia }}</td>
+                <td>
+                    <a href="{{ route('producto.edit', $producto->id) }}">Editar</a>
+                </td>
             </tr>
         @endforeach
     </tbody>
