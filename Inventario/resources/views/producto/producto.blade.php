@@ -1,6 +1,12 @@
 <h1>Productos</h1>
 
+@if (session('success'))
+    <p>{{ session('success') }}</p>
+@endif
+
 <button><a href="{{ route('logout') }}">Cerrar sesión</a></button>
+
+<button><a href="{{ route('producto.create') }}">Agregar Producto</a></button>
 
 <table>
     <thead>
@@ -13,13 +19,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($libros as $libro)
+        @foreach ($productos as $producto)
             <tr>
-                <td>{{ $libro->id }}</td>
-                <td>{{ $libro->codigo }}</td>
-                <td>{{ $libro->nombre }}</td>
-                <td>${{ $libro->precio }}</td>
-                <td>{{ $libro->existencia }}</td>
+                <td>{{ $producto->id }}</td>
+                <td>{{ $producto->codigo }}</td>
+                <td>{{ $producto->nombre }}</td>
+                <td>${{ $producto->precio }}</td>
+                <td>{{ $producto->existencia }}</td>
             </tr>
         @endforeach
     </tbody>

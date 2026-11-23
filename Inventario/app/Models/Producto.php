@@ -9,4 +9,11 @@ class Producto extends Model
 {
     /** @use HasFactory<\Database\Factories\ProductoFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'codigo',
+        'nombre',
+        'precio',
+        'existencia',
+    ];
 }
