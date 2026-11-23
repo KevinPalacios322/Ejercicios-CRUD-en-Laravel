@@ -42,4 +42,29 @@ class EstudianteController extends Controller
         return redirect()->route('estudiante.index')->with('success', 'Estudiante creado exitosamente.');
     }
 
+    public function edit($id)
+    {
+        $estudiante = Estudiante::findOrFail($id);
+        return view('estudiante.update', ['estudiante' => $estudiante]);
+    }
+    
+    public function update(Request $request, $id)
+    {
+        request()->validate([
+            'numero_cuenta' => 'required|unique:estudiantes,numero_cuenta,' . $id,
+            'nombre' => 'required',
+            'correo' => 'required|email|unique:estudiantes,correo,' . $id,
+            'fecha_nacimiento' => 'required|date',
+        ]);
+
+        $estudiante = Estudiante::findOrFail($id);
+        $estudiante->numero_cuenta = $request->input('numero_cuenta');
+        $estudiante->nombre = $request->input('nombre');
+        $estudiante->correo = $request->input('correo');
+        $estudiante->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $estudiante->save();
+
+        return redirect()->route('estudiante.index')->with('success', 'Estudiante actualizado exitosamente.');
+    }
+
 }

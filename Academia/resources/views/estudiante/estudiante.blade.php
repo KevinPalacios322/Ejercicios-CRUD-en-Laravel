@@ -15,6 +15,7 @@
             <th>Nombre</th>
             <th>Correo</th>
             <th>Fecha de nacimiento</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,10 @@
                 <td>{{ $estudiante->nombre }}</td>
                 <td>{{ $estudiante->correo }}</td>
                 <td>{{ $estudiante->fecha_nacimiento }}</td>
+                <td>
+                    <a href="{{ route('estudiante.edit', $estudiante->id) }}">Editar</a>
+                   
+                </td>
             </tr>
         @endforeach
     </tbody>
